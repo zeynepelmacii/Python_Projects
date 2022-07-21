@@ -1,0 +1,36 @@
+db = Database("participants.db")
+db.insert("zeynep","elmaci","21","5416762002")
+db.insert("umut","boran","20","5982548365")
+db.insert("yagmur","mina","19","5739265926")
+db.insert("duhanur","samasti","14","5673928504")
+db.insert("barış","tombalacı","22","5926392856")
+db.insert("tuğçe","karatepe","22","5424893678")
+db.insert("aslı","gündüz","19","5056723984")
+db.insert("onur","çoban","21","5218456988")
+db.insert("yagmur","akaydın","24","5986392658")
+
+
+
+
+CREATE DATABASE drawproject
+	WITH
+	ENCODING = 'UTF8'
+	LC_COLLATE = 'Turkish_Turkey.1254'
+	LC_CTYPE = 'Turkish_Turkey.1254';
+
+
+
+CREATE TABLE IF NOT EXISTS participants (
+	name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	surname VARCHAR ( 50 ) NOT NULL,
+	age INTEGER NOT NULL,
+	phone INTEGER NOT NULL);
+
+
+INSERT INTO participants VALUES ('zeynep','elmaci',21,1234567);
+INSERT INTO participants VALUES ('umut','boran',20,2345678);
+INSERT INTO participants VALUES ('yagmur','mina',19,3456789);
+INSERT INTO participants VALUES ('duhanur','samasti',14,4567890);
+INSERT INTO participants VALUES ('arda','kose',27,5678901);
+
+
