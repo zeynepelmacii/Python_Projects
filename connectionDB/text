@@ -1,0 +1,71 @@
+---- todo ----
+    cursor select item
+    delete book
+    update prices
+    get_conditions
+    add book page
+    add_book
+
+
+
+
+
+
+
+
+
+
+---- bağlanma ----
+    psql -U bookStoreAdmin -d bookStore
+    1234
+
+---- create database ----
+    CREATE DATABASE bookStore
+	WITH
+	ENCODING = 'UTF8'
+	LC_COLLATE = 'Turkish_Turkey.1254'
+	LC_CTYPE = 'Turkish_Turkey.1254';
+
+---- create user ----
+    create user bookStoreAdmin with encrypted password '1234';
+	grant all privileges on database bookStore to bookStoreAdmin;   **yarattığımız kullanıcıyı veritabanı sahibi yaptık
+
+
+---- create table ----
+       CREATE TABLE books (
+        isbn BIGINT primary key UNIQUE NOT NULL,
+        name VARCHAR ( 50 ) NOT NULL,
+        writer VARCHAR ( 50 )  NOT NULL,
+        publisher VARCHAR ( 50 )  NOT NULL,
+        page INTEGER NOT NULL,
+        price INTEGER NOT NULL,
+        score DECIMAL NOT NULL);
+
+---- insert value ----
+insert into books (isbn,name,writer,publisher,page,price,score) values(12649629,'Seker Portakali','Jose Mauro De Vasconcelos','Can',25,120,3.45);
+insert into books (isbn,name,writer,publisher,page,price,score) values(84520476,'Kayip Tanrilar Ulkesi','Ahmet Ümit','isbankasi', 40,300,2.5);
+insert into books (isbn,name,writer,publisher,page,price,score) values(64925491,'Insan ne ile yasar','Tolstoy','vakifbank', 70,178,4.0);
+insert into books (isbn,name,writer,publisher,page,price,score) values(93689158,'Ask ve Gurur','Jane Austen','aydinlar', 25,120,3.45);
+insert into books (isbn,name,writer,publisher,page,price,score) values(84528369,'Korluk','Jose Saramago','Dejavu', 25,120,2.76);
+insert into books (isbn,name,writer,publisher,page,price,score) values(27495838,'Diaries','George Orwell','Karbon Kitap', 60,400,2.37);
+insert into books (isbn,name,writer,publisher,page,price,score) values(60264026,'Martin Eden','Jack London','Can', 35,280,3.12);
+insert into books (isbn,name,writer,publisher,page,price,score) values(19265919,'Harry Potter','J. K. Rowling','vakifbank',100,478,4.80);
+
+
+
+values = [('12649629','Şeker Portakalı','Jose Mauro De Vasconcelos','Can', '25.99','120','3.45'),
+          ('84520476','Kayıp Tanrılar Ülkesi','Ahmet Ümit','işbankası', '40','300','2.5'),
+          ('64925491','İnsan ne ile yaşar?','Tolstoy','vakıfbank', '70','178','4.0'),
+          ('93689158','Aşk ve Gurur','Jane Austen','aydınlar', '25.99','120','3.45'),
+          ('84528369','Körlük','Jose Saramago','Dejavu', '25.99','120','3.45'),
+          ('27495838','Diaries','George Orwell','Karbon Kitap', '60','400','2.37'),
+          ('60264026','Martin Eden','Jack London','Can', '35','280','3.12'),
+          ('19265919','Harry Potter','J. K. Rowling','vakıfbank', '100','478','4.80')]
+
+
+#select with conditions
+def get_conditions(table,cond):
+    for i in database.select_with_conditions(cond):
+        table.insert(parent='', index='end', iid=i, text='', values=(i))
+
+
